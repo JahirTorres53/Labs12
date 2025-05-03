@@ -1,0 +1,43 @@
+Uso de Inteligencia Artificial en el desarrollo del proyecto (Lenguaje: C++)
+Tarea seleccionada: Proponer algoritmo de búsqueda de patrones
+
+1. ¿Qué preguntas hiciste a la IA?
+
+- ¿Cómo puedo implementar una búsqueda de patrones por palabras clave en C++?
+- ¿Cómo divido una cadena de entrada del usuario en palabras individuales?
+- ¿Cómo comparo cada palabra de entrada con las preguntas de una base de conocimiento?
+- ¿Qué método me recomienda para recorrer un map y buscar coincidencias parciales en las claves?
+
+2. ¿Qué fragmentos de código o ideas generaste con ayuda de la IA?
+
+La IA me ayudó a desarrollar esta función que hace una búsqueda por palabras clave. El usuario hace una pregunta y el programa divide esa pregunta en palabras individuales. Luego, busca si alguna de esas palabras aparece en alguna de las preguntas de la base de conocimiento:
+
+```cpp
+string buscarPorPalabrasClave(const map<string, string>& conocimiento, const string& pregunta) {
+    vector<string> palabrasPregunta;
+    stringstream ss(pregunta);
+    string palabra;
+    while (ss >> palabra) {
+        palabrasPregunta.push_back(palabra);
+    }
+
+    for (const auto& par : conocimiento) {
+        for (const auto& palabraPregunta : palabrasPregunta) {
+            if (par.first.find(palabraPregunta) != string::npos) {
+                return par.second;
+            }
+        }
+    }
+
+    return "";
+}
+```
+
+La IA me explicó que este enfoque es útil para encontrar respuestas aunque el usuario no escriba exactamente la pregunta guardada, y me propuso usar std::stringstream para separar palabras y std::string::find para buscar coincidencias parciales.
+
+3. ¿Qué aprendiste al usarla?
+
+- A dividir una frase en palabras individuales usando stringstream.
+- A recorrer un map con un bucle for para hacer búsquedas personalizadas.
+- A usar string::find() para encontrar subcadenas dentro de una string.
+- Que una IA puede ayudarme no solo a generar código, sino a comprender la lógica detrás de ese código, y mejorar mi forma de pensar en algoritmos.
